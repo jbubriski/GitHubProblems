@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using GitHubProblems.Models;
+using GitHubProblems.Authentication;
+using System.Configuration;
 
 namespace GitHubProblems
 {
@@ -27,6 +29,11 @@ namespace GitHubProblems
             //    appSecret: "");
 
             //OAuthWebSecurity.RegisterGoogleClient();
+
+            var gitHubClientId = ConfigurationManager.AppSettings["GitHub.ClientId"];
+            var gitHubClientSecret = ConfigurationManager.AppSettings["GitHub.ClientSecret"];
+
+            OAuthWebSecurity.RegisterClient(new GitHubOAuth2Client(gitHubClientId, gitHubClientSecret), "GitHub", null);
         }
     }
 }
