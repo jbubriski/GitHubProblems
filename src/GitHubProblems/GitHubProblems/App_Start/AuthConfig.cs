@@ -30,10 +30,7 @@ namespace GitHubProblems
 
             //OAuthWebSecurity.RegisterGoogleClient();
 
-            var gitHubClientId = ConfigurationManager.AppSettings["GitHub.ClientId"];
-            var gitHubClientSecret = ConfigurationManager.AppSettings["GitHub.ClientSecret"];
-
-            OAuthWebSecurity.RegisterClient(new GitHubOAuth2Client(gitHubClientId, gitHubClientSecret), "GitHub", null);
+            OAuthWebSecurity.RegisterClient(new GitHubOAuth2Client(ConfigurationManager.AppSettings["GitHub.ClientId"], ConfigurationManager.AppSettings["GitHub.ClientSecret"]), "GitHub", null);
         }
     }
 }
